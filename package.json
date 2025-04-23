@@ -1,11 +1,12 @@
 {
   "name": "@twyco/vue-image-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue Components for Laravel twyco/image-system extension",
   "type": "module",
   "files": [
     "dist"
   ],
+  "types": "dist/index.d.ts",
   "main": "./dist/vue-image-system.umd.cjs",
   "module": "./dist/vue-image-system.js",
   "scripts": {
