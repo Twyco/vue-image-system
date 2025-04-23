@@ -1,15 +1,15 @@
-// vite.config.ts
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'node:path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  plugins: [vue()],
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: resolve(__dirname, 'src/index.ts'),
       name: 'VueImageSystem',
-      fileName: (format) => `vue-image-system.${format}.js`,
+      fileName: 'vue-image-system',
     },
     rollupOptions: {
       external: ['vue'],
@@ -17,13 +17,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
-        exports: 'named'
-      }
-    }
+      },
+    },
   },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
-  }
 })

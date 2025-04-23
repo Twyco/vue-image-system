@@ -1,35 +1,31 @@
 {
-  "name": "vue-image-system",
+  "name": "@twyco/vue-image-system",
   "version": "1.0.0",
   "description": "Vue Components for Laravel twyco/image-system extension",
-  "main": "index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-image-system.umd.cjs",
+  "module": "./dist/vue-image-system.js",
   "scripts": {
     "build": "vue-tsc && vite build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "vue": "^3.5.13"
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.1",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.2",
-    "vue-tsc": "^2.2.10"
-  },
-  "module": "dist/vue-image-system.es.js",
-  "types": "dist/types/index.d.ts",
-  "files": ["dist"],
   "exports": {
     ".": {
-      "import": "./dist/vue-image-system.es.js",
-      "require": "./dist/vue-image-system.umd.js"
+      "import": "./dist/vue-image-system.js",
+      "require": "./dist/vue-image-system.umd.cjs"
     }
   },
   "peerDependencies": {
     "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.3.2",
+    "vue": "^3.5.13",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite-plugin-dts": "^3.6.0",
+    "vue-tsc": "^2.2.10",
+    "typescript": "^5.8.3"
   }
 }
