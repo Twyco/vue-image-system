@@ -14,6 +14,7 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue-image-system.js",
       "require": "./dist/vue-image-system.umd.cjs"
     }
