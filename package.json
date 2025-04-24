@@ -7,8 +7,8 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
-  "main": "./dist/vue-image-system.umd.cjs",
-  "module": "./dist/vue-image-system.js",
+  "main": "dist/vue-image-system.umd.cjs",
+  "module": "dist/vue-image-system.js",
   "scripts": {
     "build": "vue-tsc && vite build"
   },
@@ -17,6 +17,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/vue-image-system.js",
       "require": "./dist/vue-image-system.umd.cjs"
+    },
+    "./global": {
+      "types": "./dist/global.d.ts"
     }
   },
   "peerDependencies": {
