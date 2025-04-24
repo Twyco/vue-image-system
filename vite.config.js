@@ -10,8 +10,9 @@ export default defineConfig({
   plugins: [
     vuePlugin(),
     dtsPlugin({
-      include: ['src'],              // generiert types für deinen Export
-      outputDir: 'dist/types',       // wichtig für TypeScript-Nutzer
+      include: ['src/**/*.ts', 'src/**/*.vue', 'src/**/*.d.ts'],
+      outputDir: 'dist/types',
+      copyDtsFiles: true,
     })
   ],
   build: {

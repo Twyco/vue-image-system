@@ -1,12 +1,14 @@
-import ImagePicker from "./components/ImagePicker.vue";
-import {App} from "vue";
+// src/index.ts
+import ImagePicker from './components/ImagePicker.vue';
+
+export  type { Image } from './types/image-interface'
 
 export {
   ImagePicker
 }
 
 export default {
-  install(app: App) {
+  install(app: any) {
     app.component('ImagePicker', ImagePicker);
   }
 };
