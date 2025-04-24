@@ -12,11 +12,7 @@ export default defineConfig({
     dtsPlugin({
       insertTypesEntry: true,
       copyDtsFiles: true,
-      // falls du alles in eine einzige Datei rollen möchtest:
       rollupTypes: true,
-      // include: ['src/**/*.ts', 'src/**/*.vue', 'src/**/*.d.ts'],
-      // outputDir: 'dist/types',
-      // copyDtsFiles: true,
     })
   ],
   build: {

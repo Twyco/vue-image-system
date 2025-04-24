@@ -1,6 +1,3 @@
-// src/global.d.ts
-import type { Component } from 'vue'
-
 import ImagePicker from './components/ImagePicker.vue'
 
 declare module '@vue/runtime-core' {
@@ -13,5 +10,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-// Damit TS diese Datei als Modul behandelt und sie in die d.ts-Erzeugung einfließt
 export {}
