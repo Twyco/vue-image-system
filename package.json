@@ -2,6 +2,17 @@
   "name": "@twyco/vue-image-system",
   "version": "1.1.0",
   "description": "Vue Components for Laravel twyco/image-system extension",
+  "author": "Twyco",
+  "license": "MIT",
+  "repository": "twyco/vue-image-system",
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "prepare:dist": "npm run build",
+    "publish:dist": "npm run prepare:dist && npm publish dist"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
   "type": "module",
   "files": [
     "dist"
@@ -9,9 +20,6 @@
   "types": "dist/index.d.ts",
   "main": "dist/vue-image-system.umd.cjs",
   "module": "dist/vue-image-system.js",
-  "scripts": {
-    "build": "vue-tsc && vite build"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
