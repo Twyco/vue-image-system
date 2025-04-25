@@ -1,12 +1,12 @@
 {
   "name": "@twyco/vue-image-system",
-  "version": "0.0.1",
+  "version": "0.0.0-beta.1",
   "description": "Vue Components for Laravel twyco/image-system extension",
   "author": "Twyco",
   "license": "MIT",
   "repository": "twyco/vue-image-system",
   "scripts": {
-    "build": "vue-tsc && vite build",
+    "build": "rm -rf dist && vue-tsc && vite build",
     "prepare:dist": "npm run build",
     "publish:dist": "npm run prepare:dist && npm publish dist"
   },
