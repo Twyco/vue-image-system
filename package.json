@@ -1,6 +1,6 @@
 {
   "name": "@twyco/vue-image-system",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vue Components for Laravel twyco/image-system extension",
   "author": "Twyco",
   "license": "MIT",
