@@ -7,9 +7,6 @@
   "repository": "twyco/vue-image-system",
   "scripts": {
     "build": "rm -rf dist && vue-tsc && vite build",
-    "prepare:dist": "npm run build",
-    "publish:dist": "npm run prepare:dist && npm publish dist",
-    "build:install": "npm run build && cd ../../../web/photobooth/ && npm i"
   },
   "type": "module",
   "types": "dist/index.d.ts",
