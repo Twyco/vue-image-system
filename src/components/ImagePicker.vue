@@ -7,9 +7,11 @@ import Loader from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css'
 import PaginationControl from "@/components/PaginationControl.vue";
 
+const model = defineModel<ImageSystemImage | null>();
+
 const imagePagination = ref<GenericPagination<ImageSystemImage> | null>(null);
 const isLoading = ref<boolean>(false);;
-const selectedImage = ref<ImageSystemImage | null>(null);
+
 
 const fetchPage = async (page: number) => {
   axios.get(route('image-system.paginate'), {
@@ -25,11 +27,11 @@ const fetchPage = async (page: number) => {
 }
 
 const selectImage = (image: ImageSystemImage) => {
-  if(selectedImage.value?.id === image.id) {
-    selectedImage.value = null;
+  if(model.value?.id === image.id) {
+    model.value = null;
     return;
   }
-  selectedImage.value = image;
+  model.value = image;
 }
 
 onMounted(async () => {
@@ -46,21 +48,21 @@ onMounted(async () => {
   </div>
   <div
     v-if="imagePagination && !isLoading"
-    class="w-full h-full p-4"
+    class="w-full h-full"
   >
-    <div class="w-full grid grid-cols-12 gap-2">
+    <div class="w-full grid grid-cols-12 gap-1">
       <div
         ref="imageRefs"
         v-for="image in imagePagination.data"
         class="w-full border-4 p-1 rounded-sm col-span-6 md:col-span-4"
-        :class="selectedImage?.id === image.id ? 'border-secondary' : 'border-transparent'"
+        :class="model?.id === image.id ? 'border-secondary' : 'border-transparent'"
         :key="image.id"
         @click="selectImage(image)"
       >
         <img :src="image.url" alt="" class="w-full h-full object-contain">
       </div>
     </div>
-    <div class="w-full pb-4 px-4 flex justify-end">
+    <div class="w-full pt-4 flex justify-end">
       <PaginationControl
         :current-page="imagePagination.currentPage"
         :last-page="imagePagination.lastPage"
