@@ -41,6 +41,7 @@ const fetchPage = (page: number) => {
 <template>
   <div class="flex justify-center w-fit">
     <button
+      type="button"
       v-text="'<'"
       :disabled="currentPage <= 1"
       class="bg-footer text-primary font-bold px-4 disabled:opacity-35 rounded mr-2"
@@ -48,6 +49,7 @@ const fetchPage = (page: number) => {
     />
     <div v-if="lastPage > 6">
       <button
+        type="button"
         v-if="currentPage >= 4"
         v-text="1"
         class="mx-1"
@@ -58,6 +60,7 @@ const fetchPage = (page: number) => {
 
     <!-- Zeige Seiten um die aktuelle Seite herum -->
     <button
+      type="button"
       v-for="page in pages"
       :key="page"
       class="mx-1 text-primary disabled:opacity-35"
@@ -69,6 +72,7 @@ const fetchPage = (page: number) => {
     <div v-if="lastPage > 6">
       <span v-if="currentPage < lastPage - 3" class="mx-1">...</span>
       <button
+        type="button"
         v-if="currentPage <= lastPage - 3"
         v-text="lastPage"
         class="mx-1"
@@ -76,6 +80,7 @@ const fetchPage = (page: number) => {
       />
     </div>
     <button
+      type="button"
       v-text="'>'"
       :disabled="currentPage >= lastPage"
       class="bg-footer text-primary font-bold px-4 disabled:opacity-35 rounded ml-2"
