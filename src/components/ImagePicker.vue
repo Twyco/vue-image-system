@@ -1,23 +1,71 @@
 <script setup lang="ts">
-import { defineEmits, defineProps, withDefaults } from 'vue'
+import {onMounted, ref} from 'vue'
+import axios from "axios";
+import {ImageSystemImage} from "@/types/image-system-image.js";
+import {GenericPagination} from "@/types/generic-pagination.js";
+import Loader from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css'
+import PaginationControl from "@/components/PaginationControl.vue";
 
-withDefaults(defineProps<{
-  title?: string
-}>(), {
-  title: 'Leck Eier',
-})
+const imagePagination = ref<GenericPagination<ImageSystemImage> | null>(null);
+const isLoading = ref<boolean>(false);;
+const selectedImage = ref<ImageSystemImage | null>(null);
 
-const emit = defineEmits<{
-  (event: 'fick', updateValue: string): void
-}>()
+const fetchPage = async (page: number) => {
+  axios.get(route('image-system.paginate'), {
+    params: {
+      page: page,
+    }
+  }).then(response => {
+    imagePagination.value = response.data;
+  }).catch(error => {
+    //TODO fehler beim laden
+    console.log(error);
+  });
+}
+
+const selectImage = (image: ImageSystemImage) => {
+  if(selectedImage.value?.id === image.id) {
+    selectedImage.value = null;
+    return;
+  }
+  selectedImage.value = image;
+}
+
+onMounted(async () => {
+  isLoading.value = true;
+  await fetchPage(1)
+  isLoading.value = false;
+});
 
 </script>
 
 <template>
-  <div>
-    <h1>Image Picker v6</h1>
-    <h3>{{ title }}</h3>
-    <button @click="emit('fick', 'fick mich')" type="button">Emit Test</button>
+  <div class="w-full h-full flex place-items-center justify-center overflow-hidden">
+    <Loader :active="isLoading" :is-full-page="false" loader="bars" color="#FFFFFF"/>
+  </div>
+  <div
+    v-if="imagePagination && !isLoading"
+    class="w-full h-full p-4"
+  >
+    <div class="w-full grid grid-cols-12 gap-2">
+      <div
+        ref="imageRefs"
+        v-for="image in imagePagination.data"
+        class="w-full border-4 p-1 rounded-sm col-span-6 md:col-span-4"
+        :class="selectedImage?.id === image.id ? 'border-secondary' : 'border-transparent'"
+        :key="image.id"
+        @click="selectImage(image)"
+      >
+        <img :src="image.url" alt="" class="w-full h-full object-contain">
+      </div>
+    </div>
+    <div class="w-full pb-4 px-4 flex justify-end">
+      <PaginationControl
+        :current-page="imagePagination.currentPage"
+        :last-page="imagePagination.lastPage"
+        @click="(page: number) => fetchPage(page)"
+      />
+    </div>
   </div>
 </template>
-

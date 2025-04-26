@@ -1,6 +1,6 @@
 {
   "name": "@twyco/vue-image-system",
-  "version": "0.0.0-beta.1",
+  "version": "0.0.0-beta.2",
   "description": "Vue Components for Laravel twyco/image-system extension",
   "author": "Twyco",
   "license": "MIT",
@@ -8,15 +8,10 @@
   "scripts": {
     "build": "rm -rf dist && vue-tsc && vite build",
     "prepare:dist": "npm run build",
-    "publish:dist": "npm run prepare:dist && npm publish dist"
-  },
-  "dependencies": {
-    "tslib": "^2.4.0"
+    "publish:dist": "npm run prepare:dist && npm publish dist",
+    "build:install": "npm run build && cd ../../../web/photobooth/ && npm i"
   },
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "types": "dist/index.d.ts",
   "main": "dist/vue-image-system.umd.cjs",
   "module": "dist/vue-image-system.js",
@@ -30,15 +25,29 @@
       "types": "./dist/global.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "axios": "^1.6.0",
+    "vue": "^3.0.0",
+    "vue-loading-overlay": "^6.0.6",
+    "ziggy-js": "^1.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.6.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.2",
     "vite-plugin-dts": "^4.5.3",
     "vue": "^3.5.13",
-    "vue-tsc": "^2.2.10"
+    "vue-tsc": "^2.2.10",
+    "ziggy-js": "^1.0.0"
   }
 }

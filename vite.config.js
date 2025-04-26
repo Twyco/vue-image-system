@@ -15,6 +15,11 @@ export default defineConfig({
       rollupTypes: true,
     })
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    }
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -22,10 +27,11 @@ export default defineConfig({
       fileName: 'vue-image-system',
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-loading-overlay'],
       output: {
         globals: {
           vue: 'Vue',
+          'vue-loading-overlay': 'VueLoadingOverlay',
         },
         exports: "named"
       },
