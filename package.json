@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "twyco/vue-image-system",
   "scripts": {
-    "build": "rm -rf dist && vue-tsc && vite build",
+    "build": "rm -rf dist && vue-tsc && vite build"
   },
   "type": "module",
   "types": "dist/index.d.ts",
